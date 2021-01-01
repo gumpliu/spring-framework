@@ -413,6 +413,15 @@ public class ContextLoader {
 	 * <p>Any {@code ApplicationContextInitializers} implementing
 	 * {@link org.springframework.core.Ordered Ordered} or marked with @{@link
 	 * org.springframework.core.annotation.Order Order} will be sorted appropriately.
+	 *
+	 * 自定义这个ContextLoader创建的{@link ConfigurableWebApplicationContext}，
+	 * 它是在配置位置已经提供给上下文，但是在上下文<em>刷新</em>之前创建的。
+	 * < p >默认实现{@linkplain # determineContextInitializerClasses (ServletContext)决定}
+	 *  什么(如果有的话)上下文类初始化器指定通过{@linkplain # CONTEXT_INITIALIZER_CLASSES_PARAM上下文初始化参数}
+	 *  和{@linkplain ApplicationContextInitializer #初始化每个}调用与给定的web应用程序上下文。
+	 * <p>任何{@code applicationcontextinitialalizer}实现{@link org.springframework.core
+	 * 或标记为@{@link org.springframework.core.annotation。Order Order}将被适当地排序。
+	 *
 	 * @param sc the current servlet context
 	 * @param wac the newly created application context
 	 * @see #CONTEXT_INITIALIZER_CLASSES_PARAM

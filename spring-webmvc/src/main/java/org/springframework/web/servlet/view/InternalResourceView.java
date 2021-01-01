@@ -133,6 +133,9 @@ public class InternalResourceView extends AbstractUrlBasedView {
 	/**
 	 * Render the internal resource given the specified model.
 	 * This includes setting the model as request attributes.
+	 *
+	 * 根据指定的模型渲染内部资源。 这包括将模型设置为请求属性。
+	 *
 	 */
 	@Override
 	protected void renderMergedOutputModel(

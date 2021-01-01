@@ -49,6 +49,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * Provides convenient access to method parameters, the method return value,
  * method annotations, etc.
  *
+ * 封装由{@linkplain #getMethod()方法}和{@linkplain #getBean() bean}组成的处理程序方法的信息。
+ * 提供对方法参数、方法返回值、方法注释等的方便访问。
+ *
  * <p>The class may be created with a bean instance or with a bean name
  * (e.g. lazy-init bean, prototype bean). Use {@link #createWithResolvedBean()}
  * to obtain a {@code HandlerMethod} instance with a bean instance resolved

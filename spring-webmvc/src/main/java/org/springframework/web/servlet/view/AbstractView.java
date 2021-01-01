@@ -319,6 +319,9 @@ public abstract class AbstractView extends WebApplicationObjectSupport implement
 	/**
 	 * Creates a combined output Map (never {@code null}) that includes dynamic values and static attributes.
 	 * Dynamic values take precedence over static attributes.
+	 *
+	 * 创建一个包含动态值和静态属性的组合输出映射(绝不是{@code null})。动态值优先于静态属性。
+	 *
 	 */
 	protected Map<String, Object> createMergedOutputModel(@Nullable Map<String, ?> model,
 			HttpServletRequest request, HttpServletResponse response) {

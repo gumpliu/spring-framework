@@ -41,6 +41,10 @@ public interface ResourceHolder {
 	/**
 	 * Determine whether this holder is considered as 'void',
 	 * i.e. as a leftover from a previous thread.
+	 *
+	 * 确定该持有人是否被视为“无效”，
+	 * 例如，从以前的线程的剩余。
+	 *
 	 */
 	boolean isVoid();
 

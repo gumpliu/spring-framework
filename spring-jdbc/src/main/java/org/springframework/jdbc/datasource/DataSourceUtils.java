@@ -93,6 +93,12 @@ public abstract class DataSourceUtils {
 	 * when using {@link DataSourceTransactionManager}. Will bind a Connection to the thread
 	 * if transaction synchronization is active (e.g. if in a JTA transaction).
 	 * <p>Directly accessed by {@link TransactionAwareDataSourceProxy}.
+	 *
+	 * 从给定的数据源获得一个JDBC连接。与{@link #getConnection}相同，但是抛出了原始的SQLException。
+	 * <p>知道与当前线程绑定的相应连接，例如在使用{@link DataSourceTransactionManager}时。
+	 *    将绑定一个连接到线程，如果事务同步是活动的(例如，如果在一个JTA事务)。
+	 * <p>直接访问{@link TransactionAwareDataSourceProxy}。
+	 *
 	 * @param dataSource the DataSource to obtain Connections from
 	 * @return a JDBC Connection from the given DataSource
 	 * @throws SQLException if thrown by JDBC methods
@@ -148,7 +154,13 @@ public abstract class DataSourceUtils {
 	 * Actually fetch a {@link Connection} from the given {@link DataSource},
 	 * defensively turning an unexpected {@code null} return value from
 	 * {@link DataSource#getConnection()} into an {@link IllegalStateException}.
+	 *
+	 * 从给定的{@link DataSource}获取{@link Connection}，
+	 * 防御地将{@code null}从{@link DataSource#getConnection()}
+	 * 返回的{@link IllegalStateException}转换为{@link IllegalStateException}
+	 *
 	 * @param dataSource the DataSource to obtain Connections from
+	 *                   获取连接的数据源
 	 * @return a JDBC Connection from the given DataSource (never {@code null})
 	 * @throws SQLException if thrown by JDBC methods
 	 * @throws IllegalStateException if the DataSource returned a null value

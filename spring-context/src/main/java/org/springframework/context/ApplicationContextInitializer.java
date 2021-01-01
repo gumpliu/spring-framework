@@ -31,6 +31,16 @@ package org.springframework.context;
  * implemented or if the {@link org.springframework.core.annotation.Order @Order}
  * annotation is present and to sort instances accordingly if so prior to invocation.
  *
+ * 回调接口，用于在刷新{@linkplain ConfigurableApplicationContext#refresh()}
+ *  之前初始化一个Spring {@link ConfigurableApplicationContext}。
+ *
+ * <p>通常用于需要对应用程序上下文进行一些编程初始化的web应用程序中。
+ * 例如，根据{@linkplain ConfigurableApplicationContext#getEnvironment()上下文环境}注册属性源或激活配置文件。
+ * 请参阅{@code ContextLoader}和{@code FrameworkServlet}对声明“contextInitializerClasses”上下文参数和init-param的支持。
+ *
+ * <p>{@code ApplicationContextInitializer}鼓励处理器检测Spring的{@link org.springframework.core。已经实现了Ordered}接口，
+ * 或者如果@{@link org.springframework.core.annotation。Order Order}注释存在，如果在调用之前存在，则对实例进行相应的排序。
+ *
  * @author Chris Beams
  * @since 3.1
  * @param <C> the application context type

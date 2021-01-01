@@ -127,6 +127,9 @@ public abstract class AbstractUrlHandlerMapping extends AbstractHandlerMapping i
 
 	/**
 	 * Look up a handler for the URL path of the given request.
+	 *
+	 * 查找给定请求的URL路径的处理程序。
+	 *
 	 * @param request current HTTP request
 	 * @return the handler instance, or {@code null} if none found
 	 */
@@ -321,6 +324,12 @@ public abstract class AbstractUrlHandlerMapping extends AbstractHandlerMapping i
 	 * <p>The default implementation builds a {@link HandlerExecutionChain}
 	 * with a special interceptor that exposes the path attribute and URI
 	 * template variables
+	 * with a special interceptor that exposes the path attribute and uri template variables
+	 *
+	 * 为给定的原始处理程序构建一个处理程序对象，在执行处理程序之前公开实际的处理程序{@link #PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE}，
+	 * 以及{@link #URI_TEMPLATE_VARIABLES_ATTRIBUTE}。
+	 * <p>默认实现构建一个{@link HandlerExecutionChain}和一个特殊的拦截器，该拦截器公开path属性和uri模板变量
+	 *
 	 * @param rawHandler the raw handler to expose
 	 * @param pathWithinMapping the path to expose before executing the handler
 	 * @param uriTemplateVariables the URI template variables, can be {@code null} if no variables found
@@ -404,6 +413,7 @@ public abstract class AbstractUrlHandlerMapping extends AbstractHandlerMapping i
 		Object resolvedHandler = handler;
 
 		// Eagerly resolve handler if referencing singleton via name.
+		// 如果通过名称引用单例，则立即解析处理程序。
 		if (!this.lazyInitHandlers && handler instanceof String) {
 			String handlerName = (String) handler;
 			ApplicationContext applicationContext = obtainApplicationContext();
@@ -435,9 +445,6 @@ public abstract class AbstractUrlHandlerMapping extends AbstractHandlerMapping i
 			}
 			else {
 				this.handlerMap.put(urlPath, resolvedHandler);
-				if (getPatternParser() != null) {
-					this.pathPatternHandlerMap.put(getPatternParser().parse(urlPath), resolvedHandler);
-				}
 				if (logger.isTraceEnabled()) {
 					logger.trace("Mapped [" + urlPath + "] onto " + getHandlerDescription(handler));
 				}

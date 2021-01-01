@@ -103,7 +103,11 @@ public abstract class AbstractHandlerMapping extends WebApplicationObjectSupport
 	/**
 	 * Set the default handler for this handler mapping.
 	 * This handler will be returned if no specific mapping was found.
+	 *
+	 * 为这个处理程序映射设置默认处理程序。如果没有找到特定的映射，则返回此处理程序。
+	 *
 	 * <p>Default is {@code null}, indicating no default handler.
+	 * 默认值是{@code null}，表示没有默认处理程序。
 	 */
 	public void setDefaultHandler(@Nullable Object defaultHandler) {
 		this.defaultHandler = defaultHandler;
@@ -481,6 +485,9 @@ public abstract class AbstractHandlerMapping extends WebApplicationObjectSupport
 	/**
 	 * Look up a handler for the given request, falling back to the default
 	 * handler if no specific one is found.
+	 *
+	 * 查找给定请求的处理程序，如果没有找到特定的处理程序，则返回到默认处理程序。
+	 *
 	 * @param request current HTTP request
 	 * @return the corresponding handler instance, or the default handler
 	 * @see #getHandlerInternal
@@ -496,6 +503,7 @@ public abstract class AbstractHandlerMapping extends WebApplicationObjectSupport
 			return null;
 		}
 		// Bean name or resolved handler?
+		// Bean名称还是已解析的处理程序?
 		if (handler instanceof String) {
 			String handlerName = (String) handler;
 			handler = obtainApplicationContext().getBean(handlerName);
@@ -529,14 +537,27 @@ public abstract class AbstractHandlerMapping extends WebApplicationObjectSupport
 	 * Look up a handler for the given request, returning {@code null} if no
 	 * specific one is found. This method is called by {@link #getHandler};
 	 * a {@code null} return value will lead to the default handler, if one is set.
+	 *
+	 * 查找给定请求的处理程序，如果没有找到特定的处理程序，则返回{@code null}。
+	 * 这个方法由{@link #getHandler}调用;如果设置了一个{@code null}的返回值，则返回到默认的处理程序。
+	 *
 	 * <p>On CORS pre-flight requests this method should return a match not for
 	 * the pre-flight request but for the expected actual request based on the URL
 	 * path, the HTTP methods from the "Access-Control-Request-Method" header, and
 	 * the headers from the "Access-Control-Request-Headers" header thus allowing
 	 * the CORS configuration to be obtained via {@link #getCorsConfiguration(Object, HttpServletRequest)},
+	 *
+	 * 在CORS飞行前请求中，此方法应基于URL路径，“ Access-Control-Request-Method”标头中的HTTP方法和标头，
+	 * 而不是针对飞行前请求，而是针对预期的实际请求返回匹配项 从“ Access-Control-Request-Headers”标头中获取，
+	 * 从而允许通过{@link #getCorsConfiguration（Object，HttpServletRequest）}获得CORS配置，
+	 *
 	 * <p>Note: This method may also return a pre-built {@link HandlerExecutionChain},
 	 * combining a handler object with dynamically determined interceptors.
 	 * Statically specified interceptors will get merged into such an existing chain.
+	 *
+	 * 注意：此方法还可能返回预构建的{@link HandlerExecutionChain}，将处理程序对象与动态确定的拦截器组合在一起。
+	 * 静态指定的拦截器将合并到这样的现有链中。
+	 *
 	 * @param request current HTTP request
 	 * @return the corresponding handler instance, or {@code null} if none found
 	 * @throws Exception if there is an internal error

@@ -355,6 +355,9 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 
 	/**
 	 * Look up a handler method for the given request.
+	 *
+	 * 为给定的请求查找处理程序方法。
+	 *
 	 */
 	@Override
 	protected HandlerMethod getHandlerInternal(HttpServletRequest request) throws Exception {
@@ -567,6 +570,9 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 
 		/**
 		 * Return matches for the given URL path. Not thread-safe.
+		 *
+		 * 返回给定URL路径的匹配项。不是线程安全的。
+		 *
 		 * @see #acquireReadLock()
 		 */
 		@Nullable
@@ -592,6 +598,7 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 
 		/**
 		 * Acquire the read lock when using getMappings and getMappingsByUrl.
+		 * 在使用getMappings和getMappingsByUrl时获取读锁。
 		 */
 		public void acquireReadLock() {
 			this.readWriteLock.readLock().lock();

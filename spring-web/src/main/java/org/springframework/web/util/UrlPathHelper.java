@@ -99,7 +99,6 @@ public class UrlPathHelper {
 	 * <p>By default this is set to "false".
 	 */
 	public void setAlwaysUseFullPath(boolean alwaysUseFullPath) {
-		checkReadOnly();
 		this.alwaysUseFullPath = alwaysUseFullPath;
 	}
 
@@ -296,6 +295,15 @@ public class UrlPathHelper {
 	 * <p>E.g.: servlet mapping = "/test/*"; request URI = "/test/a" -> "/a".
 	 * <p>E.g.: servlet mapping = "/test"; request URI = "/test" -> "".
 	 * <p>E.g.: servlet mapping = "/*.test"; request URI = "/a.test" -> "".
+	 *
+	 * 返回给定请求的servlet映射中的路径，即请求URL的一部分，位于调用servlet的部分之外，或者“”(如果使用整个URL来标识servlet)。
+	 * 检测包含请求URL(如果在RequestDispatcher include中调用)。
+	 * 例如:servlet映射= "/*";请求URI = "/test/a" -> "/a/”.
+	 * 例如:servlet映射= "/";请求URI = "/test/a" -> "/a/”.
+	 * 例如:servlet映射= "/test/*";请求URI = "/test/a" -> "/a".
+	 * 例如:servlet映射= "/test";请求URI = "/test" -> "".
+	 * 例如:servlet映射= "/*.test";请求URI = "/a.test " -> "".
+	 *
 	 * @param request current HTTP request
 	 * @param pathWithinApp a precomputed path within the application
 	 * @return the path within the servlet mapping, or ""
@@ -308,6 +316,7 @@ public class UrlPathHelper {
 		String path;
 
 		// If the app container sanitized the servletPath, check against the sanitized version
+		// 如果应用容器对ServletPath进行了清理，请检查清理后的版本
 		if (servletPath.contains(sanitizedPathWithinApp)) {
 			path = getRemainingPath(sanitizedPathWithinApp, servletPath, false);
 		}
@@ -345,6 +354,10 @@ public class UrlPathHelper {
 	/**
 	 * Return the path within the web application for the given request.
 	 * <p>Detects include request URL if called within a RequestDispatcher include.
+	 *
+	 * 返回给定请求的web应用程序中的路径。
+	 * <p>检测在RequestDispatcher include中调用的include请求URL。
+	 *
 	 * @param request current HTTP request
 	 * @return the path within the web application
 	 * @see #getLookupPathForRequest
@@ -367,6 +380,11 @@ public class UrlPathHelper {
 	 * is a match return the extra part. This method is needed because the
 	 * context path and the servlet path returned by the HttpServletRequest are
 	 * stripped of semicolon content unlike the requestUri.
+	 *
+	 * 将给定的mapping匹配到requestUri的开头，如果匹配则返回多余的部分。
+	 * 之所以需要此方法，是因为与requestUri不同，
+	 * HttpServletRequest返回的上下文路径和servlet路径已去除分号内容。
+	 *
 	 */
 	@Nullable
 	private String getRemainingPath(String requestUri, String mapping, boolean ignoreCase) {
@@ -474,6 +492,9 @@ public class UrlPathHelper {
 			// On WebSphere, in non-compliant mode, for a "/foo/" case that would be "/foo"
 			// on all other servlet containers: removing trailing slash, proceeding with
 			// that remaining slash as final lookup path...
+			//在WebSphere上，在非兼容模式下，对于在所有其他servlet容器上都为“ / foo”的“ / foo /”情况：
+			// 删除尾部斜杠，将剩余的斜杠作为最终查找路径进行处理...
+
 			servletPath = servletPath.substring(0, servletPath.length() - 1);
 		}
 		return servletPath;
@@ -588,8 +609,14 @@ public class UrlPathHelper {
 	/**
 	 * Determine the encoding for the given request.
 	 * Can be overridden in subclasses.
+	 *
+	 * 确定给定请求的编码。可以在子类中重写。
+	 *
 	 * <p>The default implementation checks the request encoding,
 	 * falling back to the default encoding specified for this resolver.
+	 *
+	 * 默认实现检查请求编码，退回到为此解析器指定的默认编码
+	 *
 	 * @param request current HTTP request
 	 * @return the encoding for the request (never {@code null})
 	 * @see javax.servlet.ServletRequest#getCharacterEncoding()

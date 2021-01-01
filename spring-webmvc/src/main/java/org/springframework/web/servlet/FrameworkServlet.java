@@ -595,6 +595,9 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 			// Either the context is not a ConfigurableApplicationContext with refresh
 			// support or the context injected at construction time had already been
 			// refreshed -> trigger initial onRefresh manually here.
+//			要么上下文不是一个支持刷新的ConfigurableApplicationContext，
+//			要么在构建时注入的上下文已经被刷新了;
+//			在这里手动触发初始onRefresh。
 			synchronized (this.onRefreshMonitor) {
 				onRefresh(wac);
 			}
@@ -602,6 +605,7 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 
 		if (this.publishContext) {
 			// Publish the context as a servlet context attribute.
+			// 将上下文作为servlet上下文属性发布。
 			String attrName = getServletContextAttributeName();
 			getServletContext().setAttribute(attrName, wac);
 		}
