@@ -252,6 +252,9 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 
 	/**
 	 * Register the given scope, backed by the given Scope implementation.
+	 *
+	 * 注册由给定范围实现支持的给定范围。
+	 *
 	 * @param scopeName the scope identifier
 	 * @param scope the backing Scope implementation
 	 */

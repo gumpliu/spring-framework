@@ -367,6 +367,11 @@ public class DispatcherServlet extends FrameworkServlet {
 	 * Create a new {@code DispatcherServlet} with the given web application context. This
 	 * constructor is useful in Servlet 3.0+ environments where instance-based registration
 	 * of servlets is possible through the {@link ServletContext#addServlet} API.
+	 *
+	 * 使用给定的Web应用程序上下文创建一个新的{@code DispatcherServlet}。
+	 * 此构造函数在Servlet 3.0+环境中很有用，在该环境中，
+	 * 可以通过{@link ServletContext＃addServlet} API进行基于实例的servlet注册。
+	 *
 	 * <p>Using this constructor indicates that the following properties / init-params
 	 * will be ignored:
 	 * <ul>

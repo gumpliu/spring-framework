@@ -26,6 +26,8 @@ import org.springframework.lang.Nullable;
  * both theme resolution via the request and theme modification via
  * request and response.
  *
+ * 基于Web的主题解析策略的界面，该界面允许通过请求进行主题解析，以及通过请求和响应进行主题修改。
+ *
  * <p>This interface allows for implementations based on session,
  * cookies, etc. The default implementation is
  * {@link org.springframework.web.servlet.theme.FixedThemeResolver},

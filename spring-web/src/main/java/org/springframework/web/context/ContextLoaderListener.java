@@ -23,10 +23,19 @@ import javax.servlet.ServletContextListener;
  * Bootstrap listener to start up and shut down Spring's root {@link WebApplicationContext}.
  * Simply delegates to {@link ContextLoader} as well as to {@link ContextCleanupListener}.
  *
+ * 引导侦听器，用于启动和关闭Spring的根{@link WebApplicationContext}。
+ * 只需将其委托给{@link ContextLoader}以及{@link ContextCleanupListener}。
+ *
+ *
  * <p>As of Spring 3.1, {@code ContextLoaderListener} supports injecting the root web
  * application context via the {@link #ContextLoaderListener(WebApplicationContext)}
  * constructor, allowing for programmatic configuration in Servlet 3.0+ environments.
  * See {@link org.springframework.web.WebApplicationInitializer} for usage examples.
+ *
+ * 从Spring 3.1开始，{@ code ContextLoaderListener}支持通过
+ * {@link #ContextLoaderListener（WebApplicationContext）}构造函数注入根Web应用程序上下文，
+ * 从而允许在Servlet 3.0+环境中进行编程配置。
+ * 有关使用示例，请参见{@link org.springframework.web.WebApplicationInitializer}。
  *
  * @author Juergen Hoeller
  * @author Chris Beams
@@ -41,6 +50,11 @@ public class ContextLoaderListener extends ContextLoader implements ServletConte
 	 * context based on the "contextClass" and "contextConfigLocation" servlet
 	 * context-params. See {@link ContextLoader} superclass documentation for details on
 	 * default values for each.
+	 *
+	 * 创建一个新的{@code ContextLoaderListener}，
+	 * 它将基于"contextClass”和"contextConfigLocation” servlet上下文参数创建一个Web应用程序上下文。
+	 * 有关每个默认值的详细信息，请参见{@link ContextLoader}超类文档。
+	 *
 	 * <p>This constructor is typically used when declaring {@code ContextLoaderListener}
 	 * as a {@code <listener>} within {@code web.xml}, where a no-arg constructor is
 	 * required.
@@ -61,6 +75,11 @@ public class ContextLoaderListener extends ContextLoader implements ServletConte
 	 * constructor is useful in Servlet 3.0+ environments where instance-based
 	 * registration of listeners is possible through the {@link javax.servlet.ServletContext#addListener}
 	 * API.
+	 *
+	 * 使用给定的应用程序上下文创建一个新的{@code ContextLoaderListener}。
+	 * 此构造函数在Servlet 3.0+环境中很有用，在该环境中，
+	 * 可以通过{@link javax.servlet.ServletContext＃addListener} API进行基于实例的侦听器注册。
+	 *
 	 * <p>The context may or may not yet be {@linkplain
 	 * org.springframework.context.ConfigurableApplicationContext#refresh() refreshed}. If it
 	 * (a) is an implementation of {@link ConfigurableWebApplicationContext} and

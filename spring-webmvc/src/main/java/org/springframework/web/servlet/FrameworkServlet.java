@@ -500,9 +500,15 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 	 * Called by Spring via {@link ApplicationContextAware} to inject the current
 	 * application context. This method allows FrameworkServlets to be registered as
 	 * Spring beans inside an existing {@link WebApplicationContext} rather than
+	 *
+	 * 由Spring通过{@link ApplicationContextAware}调用以注入当前应用程序上下文。
+	 * 该方法允许将FrameworkServlets注册为现有{@link WebApplicationContext}中的Spring Bean，而不是
+	 *
 	 * {@link #findWebApplicationContext() finding} a
 	 * {@link org.springframework.web.context.ContextLoaderListener bootstrapped} context.
 	 * <p>Primarily added to support use in embedded servlet containers.
+	 *
+	 * 主要是为了支持在嵌入式Servlet容器中使用而添加的。
 	 * @since 4.0
 	 */
 	@Override
@@ -564,12 +570,14 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 
 		if (this.webApplicationContext != null) {
 			// A context instance was injected at construction time -> use it
+			// 一个上下文实例在构造时被注入->使用它
 			wac = this.webApplicationContext;
 			if (wac instanceof ConfigurableWebApplicationContext) {
 				ConfigurableWebApplicationContext cwac = (ConfigurableWebApplicationContext) wac;
 				if (!cwac.isActive()) {
 					// The context has not yet been refreshed -> provide services such as
 					// setting the parent context, setting the application context id, etc
+					// 上下文尚未刷新->提供诸如设置父上下文，设置应用程序上下文ID等服务。
 					if (cwac.getParent() == null) {
 						// The context instance was injected without an explicit parent -> set
 						// the root application context (if any; may be null) as the parent
@@ -584,6 +592,8 @@ public abstract class FrameworkServlet extends HttpServletBean implements Applic
 			// has been registered in the servlet context. If one exists, it is assumed
 			// that the parent context (if any) has already been set and that the
 			// user has performed any initialization such as setting the context id
+			//在构造时未注入任何上下文实例->查看是否已在servlet上下文中注册了一个实例。
+			// 如果存在，则假定已经设置了父上下文（如果有），并且用户已经执行了任何初始化操作，例如设置了上下文ID。
 			wac = findWebApplicationContext();
 		}
 		if (wac == null) {

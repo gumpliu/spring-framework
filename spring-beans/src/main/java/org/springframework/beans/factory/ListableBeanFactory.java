@@ -281,6 +281,9 @@ public interface ListableBeanFactory extends BeanFactory {
 	 * Return the bean instances that match the given object type (including
 	 * subclasses), judging from either bean definitions or the value of
 	 * {@code getObjectType} in the case of FactoryBeans.
+	 *
+	 * 根据FactoryBeans的bean定义或{@code getObjectType}的值判断，返回与给定对象类型（包括子类）匹配的bean实例。
+	 *
 	 * <p><b>NOTE: This method introspects top-level beans only.</b> It does <i>not</i>
 	 * check nested beans which might match the specified type as well.
 	 * <p>Does consider objects created by FactoryBeans if the "allowEagerInit" flag is set,
@@ -288,17 +291,36 @@ public interface ListableBeanFactory extends BeanFactory {
 	 * FactoryBean doesn't match, the raw FactoryBean itself will be matched against the
 	 * type. If "allowEagerInit" is not set, only raw FactoryBeans will be checked
 	 * (which doesn't require initialization of each FactoryBean).
+	 *
+	 * 注意：此方法仅内省顶级bean。它不检查可能与指定类型匹配的嵌套bean。
+	 * 如果设置了“ allowEagerInit”标志，会考虑FactoryBeans创建的对象，这意味着将初始化FactoryBeans。
+	 * 								如果由FactoryBean创建的对象不匹配，则原始FactoryBean本身将与该类型匹配。
+	 * 如果未设置“ allowEagerInit”，则将仅检查原始FactoryBean（不需要初始化每个FactoryBean）。
+	 *
 	 * <p>Does not consider any hierarchy this factory may participate in.
 	 * Use BeanFactoryUtils' {@code beansOfTypeIncludingAncestors}
 	 * to include beans in ancestor factories too.
+	 *
+	 * 不考虑该工厂可能参与的任何层次结构。
+	 * 也可以使用BeanFactoryUtils的{@code beansOfTypeIn includedAncestors}将Bean包括在祖先工厂中。
+	 *
 	 * <p>Note: Does <i>not</i> ignore singleton beans that have been registered
 	 * by other means than bean definitions.
+	 *
+	 * 注意：不要忽略通过bean定义以外的其他方式注册的单例bean。
+	 *
 	 * <p>The Map returned by this method should always return bean names and
 	 * corresponding bean instances <i>in the order of definition</i> in the
 	 * backend configuration, as far as possible.
+	 *
+	 * 通过此方法返回的Map应该始终尽可能在后端配置中按定义顺序返回bean名称和相应的bean实例。
+	 *
 	 * @param type the class or interface to match, or {@code null} for all concrete beans
 	 * @param includeNonSingletons whether to include prototype or scoped beans too
 	 * or just singletons (also applies to FactoryBeans)
+	 *
+	 *  是否也包含原型或范围内的bean还是仅包含单例（也适用于FactoryBeans）
+	 *
 	 * @param allowEagerInit whether to initialize <i>lazy-init singletons</i> and
 	 * <i>objects created by FactoryBeans</i> (or by factory methods with a
 	 * "factory-bean" reference) for the type check. Note that FactoryBeans need to be

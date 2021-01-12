@@ -483,7 +483,7 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 	 * Determine whether the given class does not match any exclude filter
 	 * and does match at least one include filter.
 	 * @param metadataReader the ASM ClassReader for the class
-	 * @return whether the class qualifies as a candidate component
+	 * @return whether the class qualifies as a candidate component 该类是否符合候选资格
 	 */
 	protected boolean isCandidateComponent(MetadataReader metadataReader) throws IOException {
 		for (TypeFilter tf : this.excludeFilters) {

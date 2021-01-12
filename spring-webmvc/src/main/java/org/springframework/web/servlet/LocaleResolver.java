@@ -28,14 +28,22 @@ import org.springframework.lang.Nullable;
  * both locale resolution via the request and locale modification via
  * request and response.
  *
+ * 基于Web的语言环境解析策略的接口，它既可以通过请求进行语言环境解析，又可以通过请求和响应进行语言环境修改。
+ *
+ *
  * <p>This interface allows for implementations based on request, session,
  * cookies, etc. The default implementation is
  * {@link org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver},
  * simply using the request's locale provided by the respective HTTP header.
  *
+ * 该接口允许基于请求，会话，Cookie等的实现。默认实现为{@link org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver}
+ * 只需使用相应HTTP标头提供的请求的语言环境即可。
+ *
  * <p>Use {@link org.springframework.web.servlet.support.RequestContext#getLocale()}
  * to retrieve the current locale in controllers or views, independent
  * of the actual resolution strategy.
+ * 使用{@link org.springframework.web.servlet.support.RequestContext＃getLocale()}
+ * 来获取控制器或视图中的当前语言环境，而与实际的解析策略无关。
  *
  * <p>Note: As of Spring 4.0, there is an extended strategy interface
  * called {@link LocaleContextResolver}, allowing for resolution of
@@ -43,6 +51,10 @@ import org.springframework.lang.Nullable;
  * potentially including associated time zone information. Spring's
  * provided resolver implementations implement the extended
  * {@link LocaleContextResolver} interface wherever appropriate.
+ *
+ * 注意：从Spring 4.0开始，有一个名为{@link LocaleContextResolver}的扩展策略接口，
+ * 允许解析{@link org.springframework.context.i18n.LocaleContext}对象，
+ * 可能包括相关的时区信息。 Spring提供的解析器实现在适当的地方实现扩展的{@link LocaleContextResolver}接口。
  *
  * @author Juergen Hoeller
  * @since 27.02.2003
