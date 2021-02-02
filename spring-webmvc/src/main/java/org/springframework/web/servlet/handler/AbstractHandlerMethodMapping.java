@@ -63,18 +63,30 @@ import org.springframework.web.servlet.HandlerMapping;
  * @since 3.1
  * @param <T> the mapping for a {@link HandlerMethod} containing the conditions
  * needed to match the handler method to an incoming request.
+ * 			{@link HandlerMethod}的映射，该映射包含与处理程序方法匹配到传入请求所需的条件。
  */
 public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMapping implements InitializingBean {
 
 	/**
 	 * Bean name prefix for target beans behind scoped proxies. Used to exclude those
 	 * targets from handler method detection, in favor of the corresponding proxies.
+	 *
+	 * 指定作用域代理后的目标Bean的Bean名称前缀。用于从处理程序方法检测中排除这些目标，以便于相应的代理。
+	 *
 	 * <p>We're not checking the autowire-candidate status here, which is how the
 	 * proxy target filtering problem is being handled at the autowiring level,
 	 * since autowire-candidate may have been turned to {@code false} for other
 	 * reasons, while still expecting the bean to be eligible for handler methods.
+	 *
+	 * 我们不在这里检查autowire-candidate状态，这是在自动装配级别处理代理目标过滤问题的方式，
+	 * 因为autowire-candidate可能由于其他原因已被转为{@code false}，同时仍然期望 bean有资格使用处理程序方法。
+	 *
 	 * <p>Originally defined in {@link org.springframework.aop.scope.ScopedProxyUtils}
 	 * but duplicated here to avoid a hard dependency on the spring-aop module.
+	 *
+	 * 最初是在{@link org.springframework.aop.scope.ScopedProxyUtils}中定义的，
+	 * 但此处进行了重复以避免对spring-aop模块的严格依赖。
+	 *
 	 */
 	private static final String SCOPED_TARGET_NAME_PREFIX = "scopedTarget.";
 
@@ -205,6 +217,9 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 
 	/**
 	 * Scan beans in the ApplicationContext, detect and register handler methods.
+	 *
+	 * 扫描ApplicationContext中的bean，检测并注册处理程序方法。
+	 *
 	 * @see #getCandidateBeanNames()
 	 * @see #processCandidateBean
 	 * @see #handlerMethodsInitialized
@@ -220,6 +235,9 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 
 	/**
 	 * Determine the names of candidate beans in the application context.
+	 *
+	 * 确定应用程序上下文中候选bean的名称。
+	 *
 	 * @since 5.1
 	 * @see #setDetectHandlerMethodsInAncestorContexts
 	 * @see BeanFactoryUtils#beanNamesForTypeIncludingAncestors
@@ -236,7 +254,12 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 	 * <p>This implementation avoids bean creation through checking
 	 * {@link org.springframework.beans.factory.BeanFactory#getType}
 	 * and calling {@link #detectHandlerMethods} with the bean name.
-	 * @param beanName the name of the candidate bean
+	 *
+	 * 确定指定的候选bean的类型，并在标识为处理程序类型时调用{@link #detectHandlerMethods}。
+	 * 此实现通过检查{@link org.springframework.beans.factory.BeanFactory＃getType}
+	 * 并使用bean名称调用{@link #detectHandlerMethods}来避免创建bean。
+	 *
+	 * @param beanName the name of the candidate bean  候选bean的名称
 	 * @since 5.1
 	 * @see #isHandler
 	 * @see #detectHandlerMethods
@@ -259,7 +282,11 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 
 	/**
 	 * Look for handler methods in the specified handler bean.
+	 *
+	 * 在指定的处理程序bean中查找处理程序方法。
+	 *
 	 * @param handler either a bean name or an actual handler instance
+	 *                Bean名称或实际处理程序实例
 	 * @see #getMappingForMethod
 	 */
 	protected void detectHandlerMethods(Object handler) {
@@ -375,6 +402,9 @@ public abstract class AbstractHandlerMethodMapping<T> extends AbstractHandlerMap
 	/**
 	 * Look up the best-matching handler method for the current request.
 	 * If multiple matches are found, the best match is selected.
+	 *
+	 * 为当前请求查找最佳匹配的处理程序方法。如果有多个匹配项，则选择最佳匹配项。
+	 *
 	 * @param lookupPath mapping lookup path within the current servlet mapping
 	 * @param request the current request
 	 * @return the best-matching handler method, or {@code null} if no match

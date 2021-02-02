@@ -346,11 +346,19 @@ public abstract class ReflectionUtils {
 	/**
 	 * Perform the given callback operation on all matching methods of the given
 	 * class and superclasses (or given interface and super-interfaces).
+	 *
+	 * 对给定类和超类（或给定接口和超接口）的所有匹配方法执行给定的回调操作。
+	 *
 	 * <p>The same named method occurring on subclass and superclass will appear
 	 * twice, unless excluded by the specified {@link MethodFilter}.
+	 *
+	 * 除非被指定的{@link MethodFilter}排除，否则在子类和超类上发生的相同命名方法将出现两次。
+	 *
 	 * @param clazz the class to introspect
 	 * @param mc the callback to invoke for each method
+	 *           为每个方法指定调用的回调
 	 * @param mf the filter that determines the methods to apply the callback to
+	 *           确定将回调应用于的方法的过滤器
 	 * @throws IllegalStateException if introspection fails
 	 */
 	public static void doWithMethods(Class<?> clazz, MethodCallback mc, @Nullable MethodFilter mf) {
@@ -807,6 +815,9 @@ public abstract class ReflectionUtils {
 
 		/**
 		 * Perform an operation using the given method.
+		 *
+		 * 使用给定的方法执行操作。
+		 *
 		 * @param method the method to operate on
 		 */
 		void doWith(Method method) throws IllegalArgumentException, IllegalAccessException;

@@ -188,6 +188,9 @@ public class HandlerExecutionChain {
 
 	/**
 	 * Apply afterConcurrentHandlerStarted callback on mapped AsyncHandlerInterceptors.
+	 *
+	 * 在映射的AsyncHandlerInterceptors上应用afterConcurrentHandlerStarted回调。
+	 *
 	 */
 	void applyAfterConcurrentHandlingStarted(HttpServletRequest request, HttpServletResponse response) {
 		for (int i = this.interceptorList.size() - 1; i >= 0; i--) {

@@ -567,6 +567,9 @@ public abstract class AbstractHandlerMapping extends WebApplicationObjectSupport
 
 	/**
 	 * Initialize the path to use for request mapping.
+	 *
+	 * 初始化用于请求映射的路径。
+	 *
 	 * <p>When parsed patterns are {@link #usesPathPatterns() enabled} a parsed
 	 * {@code RequestPath} is expected to have been
 	 * {@link ServletRequestPathUtils#parseAndCache(HttpServletRequest) parsed}
@@ -575,6 +578,8 @@ public abstract class AbstractHandlerMapping extends WebApplicationObjectSupport
 	 * <p>Otherwise for String pattern matching via {@code PathMatcher} the
 	 * path is {@link UrlPathHelper#resolveAndCacheLookupPath resolved} by this
 	 * method.
+
+	 *
 	 * @since 5.3
 	 */
 	protected String initLookupPath(HttpServletRequest request) {

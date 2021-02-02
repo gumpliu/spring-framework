@@ -70,6 +70,7 @@ public final class MethodIntrospector {
 			final Class<?> targetClass = (specificHandlerType != null ? specificHandlerType : currentHandlerType);
 
 			ReflectionUtils.doWithMethods(currentHandlerType, method -> {
+				// specific翻译为明确
 				Method specificMethod = ClassUtils.getMostSpecificMethod(method, targetClass);
 				T result = metadataLookup.inspect(specificMethod);
 				if (result != null) {
