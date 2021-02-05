@@ -32,7 +32,7 @@ import javax.servlet.ServletContextListener;
  * constructor, allowing for programmatic configuration in Servlet 3.0+ environments.
  * See {@link org.springframework.web.WebApplicationInitializer} for usage examples.
  *
- * 从Spring 3.1开始，{@ code ContextLoaderListener}支持通过
+ * 从Spring 3.1开始，{@code ContextLoaderListener}支持通过
  * {@link #ContextLoaderListener（WebApplicationContext）}构造函数注入根Web应用程序上下文，
  * 从而允许在Servlet 3.0+环境中进行编程配置。
  * 有关使用示例，请参见{@link org.springframework.web.WebApplicationInitializer}。

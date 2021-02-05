@@ -47,11 +47,17 @@ import org.springframework.util.StringUtils;
  * Performs the actual initialization work for the root application context.
  * Called by {@link ContextLoaderListener}.
  *
+ * 对根应用程序上下文执行实际的初始化工作。由{@link ContextLoaderListener}调用。
+ *
  * <p>Looks for a {@link #CONTEXT_CLASS_PARAM "contextClass"} parameter at the
  * {@code web.xml} context-param level to specify the context class type, falling
  * back to {@link org.springframework.web.context.support.XmlWebApplicationContext}
  * if not found. With the default ContextLoader implementation, any context class
  * specified needs to implement the {@link ConfigurableWebApplicationContext} interface.
+ *
+ * 在{@code web.xml}上下文参数级别上寻找一个{@link #CONTEXT_CLASS_PARAM“ contextClass”}参数以指定上下文类类型，
+ * 回退到{@link org.springframework.web.context.support.XmlWebApplicationContext }（如果找不到）。
+ * 使用默认的ContextLoader实现，指定的任何上下文类都需要实现{@link ConfigurableWebApplicationContext}接口。
  *
  * <p>Processes a {@link #CONFIG_LOCATION_PARAM "contextConfigLocation"} context-param
  * and passes its value to the context instance, parsing it into potentially multiple
@@ -62,19 +68,36 @@ import org.springframework.util.StringUtils;
  * If not explicitly specified, the context implementation is supposed to use a
  * default location (with XmlWebApplicationContext: "/WEB-INF/applicationContext.xml").
  *
+ * 处理{@link #CONFIG_LOCATION_PARAM“ contextConfigLocation”}上下文参数，
+ * 并将其值传递到上下文实例，将其解析为可能由多个逗号和空格分隔的多个文件路径，例如 “WEB-INF/applicationContext1.xml，
+ * WEB-INF/applicationContext2.xml”。 还支持ANT风格的路径模式，例如 “WEB-INF/Context.xml，WEB-INF/spring*.xml
+ * 或WEB-INF /＆＃42;＆＃42; / * Context.xml”。 如果未明确指定，则上下文实现应使用默认位置（对于XmlWebApplicationContext：
+ * “/WEB-INF/applicationContext.xml”）。
+ *
+ *
  * <p>Note: In case of multiple config locations, later bean definitions will
  * override ones defined in previously loaded files, at least when using one of
  * Spring's default ApplicationContext implementations. This can be leveraged
  * to deliberately override certain bean definitions via an extra XML file.
  *
+ * 注意：如果有多个配置位置，至少在使用Spring的默认ApplicationContext实现之一时，以后的bean定义将覆盖先前加载的文件中定义的定义。
+ * 可以利用它来通过一个额外的XML文件有意覆盖某些bean定义。
+ *
  * <p>Above and beyond loading the root application context, this class can optionally
  * load or obtain and hook up a shared parent context to the root application context.
  * See the {@link #loadParentContext(ServletContext)} method for more information.
+ *
+ * 除了加载根应用程序上下文之外，此类还可以选择加载或获取并将共享的父上下文挂钩到根应用程序上下文。
+ * 有关更多信息，请参见{@link #loadParentContext（ServletContext）}方法。
  *
  * <p>As of Spring 3.1, {@code ContextLoader} supports injecting the root web
  * application context via the {@link #ContextLoader(WebApplicationContext)}
  * constructor, allowing for programmatic configuration in Servlet 3.0+ environments.
  * See {@link org.springframework.web.WebApplicationInitializer} for usage examples.
+ *
+ * 从Spring 3.1开始，{@ code ContextLoader}支持通过{@link #ContextLoader（WebApplicationContext）}
+ * 构造函数注入根Web应用程序上下文，从而允许在Servlet 3.0+环境中进行编程配置。
+ * 有关使用示例，请参见{@link org.springframework.web.WebApplicationInitializer}。
  *
  * @author Juergen Hoeller
  * @author Colin Sampaleanu

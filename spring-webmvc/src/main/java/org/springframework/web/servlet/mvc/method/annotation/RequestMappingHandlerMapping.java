@@ -229,6 +229,7 @@ public class RequestMappingHandlerMapping extends RequestMappingInfoHandlerMappi
 
 	/**
 	 * Whether to match to URLs irrespective of the presence of a trailing slash.
+	 * 是否与URL匹配，无论是否存在斜杠。
 	 */
 	public boolean useTrailingSlashMatch() {
 		return this.useTrailingSlashMatch;

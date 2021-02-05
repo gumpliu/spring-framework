@@ -33,11 +33,19 @@ import org.springframework.util.Assert;
  * context reference and provides an initialization callback method.
  * Furthermore, it offers numerous convenience methods for message lookup.
  *
+ * 想要知道应用程序上下文的应用程序对象的便捷超类，
+ * 例如 用于自定义查找协作bean或用于特定于上下文的资源访问。
+ * 它保存应用程序上下文引用，并提供初始化回调方法。 此外，它提供了许多方便的消息查找方法。
+ *
+ *
  * <p>There is no requirement to subclass this class: It just makes things
  * a little easier if you need access to the context, e.g. for access to
  * file resources or to the message source. Note that many application
  * objects do not need to be aware of the application context at all,
  * as they can receive collaborating beans via bean references.
+ *
+ * 不需要继承此类：如果您需要访问上下文，例如，它将使事情变得容易一些。用于访问文件资源或消息源。
+ * 注意，许多应用程序对象根本不需要了解应用程序上下文，因为它们可以通过bean引用接收协作bean。
  *
  * <p>Many framework classes are derived from this class, particularly
  * within the web support.
@@ -115,6 +123,12 @@ public abstract class ApplicationObjectSupport implements ApplicationContextAwar
 	 * but rather just on first initialization of this object's context reference.
 	 * <p>The default implementation calls the overloaded {@link #initApplicationContext()}
 	 * method without ApplicationContext reference.
+	 *
+	 *   子类可以重写此方法以实现自定义初始化行为。
+	 *   设置上下文实例后，由{@code setApplicationContext}调用。
+	 *   <p>注意：<i>Not</i>是在重新初始化上下文时调用的，而是在第一次初始化该对象的上下文引用时调用的。
+	 *   <p>默认实现不使用ApplicationContext引用而调用重载的{@link #initApplicationContext（）}方法。
+	 *
 	 * @param context the containing ApplicationContext
 	 * @throws ApplicationContextException in case of initialization errors
 	 * @throws BeansException if thrown by ApplicationContext methods

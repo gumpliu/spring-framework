@@ -812,6 +812,9 @@ public final class RequestMappingInfo implements RequestCondition<RequestMapping
 
 		/**
 		 * Set whether to apply trailing slash matching in PatternsRequestCondition.
+		 *
+		 * 设置是否在PatternsRequestCondition中应用尾部斜杠匹配。
+		 *
 		 * <p>By default this is set to 'true'.
 		 */
 		public void setTrailingSlashMatch(boolean trailingSlashMatch) {
